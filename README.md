@@ -40,15 +40,4 @@ The project uses the following Maven dependencies:
 
 ---
 
-## Project Structure
-practice/
-├─ src/
-│ ├─ main/
-│ │ ├─ java/com/springboot/
-│ │ │ └─ Application.java
-│ │ └─ resources/
-│ │ └─ application.properties
-│ └─ test/
-│ └─ java/com/springboot/
-├─ pom.xml
-└─ README.md
+
