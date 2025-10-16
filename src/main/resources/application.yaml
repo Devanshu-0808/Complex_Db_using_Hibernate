@@ -1,0 +1,20 @@
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: practice
+  datasource:
+    url: jdbc:mysql://localhost:3306/Practice
+    username: root
+    password: Devanshu@0808
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+        hibernate:
+            formate_sql:true
+    show-sql: true
+    
