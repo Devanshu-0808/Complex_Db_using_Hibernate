@@ -35,7 +35,7 @@ public class Carts {
     Users user_cart;
 
     @OneToMany(mappedBy = "cartId")
-     @JsonIgnore
+    @JsonIgnore
     List<CartItems> cartItems;
 
 }
