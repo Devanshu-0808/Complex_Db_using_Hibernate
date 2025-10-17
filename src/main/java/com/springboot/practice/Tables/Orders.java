@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -21,38 +22,42 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="ORDERS")
+@Table(name = "ORDERS")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Orders {
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String orderDate;
-    
+
     @Enumerated(EnumType.STRING)
     OrderStatus status;
 
     Double total_Amount;
-    
+
     @ManyToOne()
-    @JoinColumn(name="Shipping_Address_id")
+    @JoinColumn(name = "Shipping_Address_id")
     Address shipping_Address_id;
 
     @ManyToOne()
-    @JoinColumn(name="User_id")
+    @JoinColumn(name = "User_id")
+
     Users user_id;
 
-    @OneToMany(mappedBy="order_id")
+    @OneToMany(mappedBy = "order_id")
+    @JsonIgnore
     List<Order_item> order_items;
 
     @OneToOne
+     @JsonIgnore
     Payments payment;
 }
-enum OrderStatus{
+
+enum OrderStatus {
     PENDING,
     SHIPPED,
     DELIVERED,

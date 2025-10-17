@@ -2,6 +2,8 @@ package com.springboot.practice.Tables;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,6 +32,7 @@ public class Category {
     String description;
     
     @OneToMany(mappedBy="category")
+     @JsonIgnore
     List<Products> products;
 
 }

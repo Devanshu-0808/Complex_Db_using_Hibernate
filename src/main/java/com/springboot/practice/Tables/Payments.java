@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="PAYMENTS")
+@Table(name = "PAYMENTS")
 @Getter
 @Setter
 @ToString
@@ -30,27 +31,30 @@ public class Payments {
 
     @Enumerated(EnumType.STRING)
     PaymentStatus status;
-    
+
     @Enumerated(EnumType.STRING)
     PaymentMethod method;
-    
+
     Double amount;
     String transactionId;
 
     @OneToOne(mappedBy = "payment")
-    @JoinColumn(name="order_id")
+    @JoinColumn(name = "order_id")
+   
     Orders order_id2;
 
 }
-enum PaymentStatus{
+
+enum PaymentStatus {
     PENDING,
     COMPLETED,
     FAILED,
     REFUNDED
 }
-enum PaymentMethod{
+
+enum PaymentMethod {
     CREDIT_CARD,
     UPI,
     COD,
-   
+
 }

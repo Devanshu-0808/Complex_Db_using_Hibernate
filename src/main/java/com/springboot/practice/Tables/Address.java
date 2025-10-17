@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -16,9 +17,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Entity
-@Table(name="ADDRESS")
+@Table(name = "ADDRESS")
 @Getter
 @Setter
 @ToString
@@ -33,11 +33,12 @@ public class Address {
     String state;
     String zipCode;
     String country;
-    
+
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
     Users user1;
 
-    @OneToMany(mappedBy="shipping_Address_id")
+    @OneToMany(mappedBy = "shipping_Address_id")
     List<Orders> orders;
 }

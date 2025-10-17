@@ -5,8 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="ORDER_ITEM")
+@Table(name = "ORDER_ITEM")
 @Getter
 @Setter
 @ToString
@@ -29,10 +29,11 @@ public class Order_item {
     Double price;
 
     @ManyToOne
-    @JoinColumn(name="Order_id")
+    @JoinColumn(name = "Order_id")
     Orders order_id;
 
     @ManyToOne
-    @JoinColumn(name="Product_id")
+    @JoinColumn(name = "Product_id")
+    
     Products product2;
 }

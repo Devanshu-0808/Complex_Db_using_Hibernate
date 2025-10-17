@@ -3,6 +3,7 @@ package com.springboot.practice.Tables;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -41,15 +42,19 @@ public class Users {
     Date created_at = new Date();
      
     @OneToMany(mappedBy="user1")
+     @JsonIgnore
     List<Address> address;
 
     @OneToOne(mappedBy="user_cart")
+    @JsonIgnore
     Carts cart;
 
     @OneToMany(mappedBy="user_id")
+ @JsonIgnore
     List<Orders> orders;
 
     @OneToMany(mappedBy="user2")
+     @JsonIgnore
     List<Review> reviews;
 
 }

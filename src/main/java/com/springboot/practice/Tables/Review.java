@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="REVIEW")
+@Table(name = "REVIEW")
 @Getter
 @Setter
 @ToString
@@ -30,18 +31,16 @@ public class Review {
     Integer id;
     Integer rating;
     String comment;
-   
-    
+
     @Temporal(TemporalType.TIMESTAMP)
-    Date createdAt=new Date();
+    Date createdAt = new Date();
 
     @ManyToOne
-    @JoinColumn(name="User_id")
+    @JoinColumn(name = "User_id")
     Users user2;
 
-
     @ManyToOne
-    @JoinColumn(name="Product_id")
+    @JoinColumn(name = "Product_id")
     Products product2;
 
 }
